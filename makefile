@@ -15,7 +15,7 @@ commit_all:
 
 # Push on branch origin/main
 
-# 
+# Push on the main branch after adding and commiting the file
 all: add_file commit_all
 
 

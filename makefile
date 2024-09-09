@@ -1,14 +1,27 @@
-# file that we are modifying
+# File that we are modifying
 filename = EDA.ipynb
 
-# add file
+# Add file
 add_file:
 	git add $(filename)
 
-# commit file changes
+# Commit file changes
 commit_file:
 	git commit $(filename)
 
-# commit all files
+# Commit all files
 commit_all:
 	git commit -a
+
+# Push on branch origin/main
+
+# 
+all: add_file commit_all
+
+
+# Default target: all
+.DEFAULT_GOAL := commit_all
+
+# Phony targets
+.PHONY: add_file commit_file commit_all all
+

@@ -1,0 +1,27 @@
+SCRIVO IN MANIERA ABBASTANZA TERRIBILE PER ORA, NEL CASO POI SISTEMO A POCO A POCO
+le seguenti sono le 'parole chiave' del nostro progetto
+'administrative_regions_Trentino', 'df_corrente_dec', 'df_corrente_nov', 'df_meteo', 
+'df_precipitazioni', 'df_social', 'df_ubicazioni', 'gdf', 'gdf_com' (e altri, I guess?)
+
+in particolare per alcuni df: 
+df_corrente avrà colonne: 'LINESET','time','corrente'
+df_precipitazioni: 'time','cellId','pioggia'
+
+(mattedo all'inizio inizio nel file EDA novembre fanno cose bruttissime che io non ho capito perchè sono troppo stupido)
+
+-Creo vettore coi nomi delle linee elettriche (da df_ubicazioni con colonna LINESET (?)) e definisco la costante conv_kWh, 
+con cui vado a trasformare la corrente che scorre istante per istante nelle linee in potenza media misurata in kWh assorbita dall rete. 
+-Tensione trifase associata alle ubicazioni civili: 240V (RMS) -> conv_kWh = 240 x 3600/1000 = 240 x 3.6
+
+Creare funzione che trasforma i timestep in date: anno-mese-giorno-... (format='%Y%m%d%H%M' I guess) e trasformo le colonne del tempo
+dei df in colonne di date
+
+RICHIESTA DELL'EDA: individuo AREE CON CONSUMI MAGGIORI:
+-Associo consumo medio mensile delle linee elettrice con i quadratini delle linee
+-Calcolo corrente pesata sulle ubicazioni dei quadratini (non ho capito), e sommo se ci sono più contributi (da più reti)
+-Plotto risultato -> merge con griglia del Trentino
+ATTENZIONE CHE ABBIANO LO STESSO SISTEMA DI COORDINATE (per i confini regioni amministr e griglia Trentino) -> scelgo una proiezione 
+-Evidenzio i confini
+
+RICHIESTA DELL'EDA: individuo LINEE ELETTRICHE CON MAGGIORI VARIAZIONI DI CONSUMI (in giornata e nel mese)
+-Calcolo 'derivata' sui 

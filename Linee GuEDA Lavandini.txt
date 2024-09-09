@@ -9,10 +9,12 @@ df_precipitazioni: 'time','cellId','pioggia'
 
 (mattedo all'inizio inizio nel file EDA novembre fanno cose bruttissime che io non ho capito perchè sono troppo stupido)
 
+LINEE ELETTRICHE
 -Creo vettore coi nomi delle linee elettriche (da df_ubicazioni con colonna LINESET (?)) e definisco la costante conv_kWh, 
 con cui vado a trasformare la corrente che scorre istante per istante nelle linee in potenza media misurata in kWh assorbita dall rete. 
 -Tensione trifase associata alle ubicazioni civili: 240V (RMS) -> conv_kWh = 240 x 3600/1000 = 240 x 3.6
 
+DA TIMESTEP A DATA GIORNO MESE ANNO...
 Creare funzione che trasforma i timestep in date: anno-mese-giorno-... (format='%Y%m%d%H%M' I guess) e trasformo le colonne del tempo
 dei df in colonne di date
 
@@ -24,4 +26,15 @@ ATTENZIONE CHE ABBIANO LO STESSO SISTEMA DI COORDINATE (per i confini regioni am
 -Evidenzio i confini
 
 RICHIESTA DELL'EDA: individuo LINEE ELETTRICHE CON MAGGIORI VARIAZIONI DI CONSUMI (in giornata e nel mese)
--Calcolo 'derivata' sui 
+Mese:
+-Calcolo 'derivata' fra un giorno e l'altro (vedo il consumo medio totale della giornata) (se vuoi vedi Mattedo)
+-Seleziono soglia minima così da isolare solo alcune linee
+-Plot dei valori per fare vedere (non necessario? o forse sì)
+-Plot con linee elettriche colorate in questione su mappa trentino
+Giornata:
+-stessa cosa ma con i vari timestep, puoi farlo sui timestep singoli oppure anche sulle ore secondo me
+(quindi in quel caso bisogna vedere il consumo medio totale delle ore)
+-Plot come sopra
+-Plot come sopra
+
+STAZIONI METEO

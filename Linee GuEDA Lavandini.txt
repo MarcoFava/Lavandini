@@ -37,4 +37,28 @@ Giornata:
 -Plot come sopra
 -Plot come sopra
 
-STAZIONI METEO
+STAZIONI METEO (get ready for the worst)
+E' utile plottarle su mappa Trentino: (così poi per le predizioni di ML associo quadratini e dati meteo)
+-Costruisco GeoDataFrame con posizioni stazioni meteo (Mattedo: creano una funzione per farlo, non nec?)
+-Proietto su sistema coordinate
+
+SOCIAL PULSE (dati dai social ?)
+Procedimento analogo che per staz meteo
+-" "
+-" "
+
+COSTRUISCO IL DF 'DEFINITIVO' (o totale) CON FEATURES
+-Feature (colonna) 'corrente pesata' ad ogni timestep, la calcolo allo stesso modo (+ o -) che in riga 23
+-Feature(?) (colonna) 'geometry': prendo coordinate spaziali dei quadratini -> merge con geodataframe (?)
+- to be continued...
+
+Ora mi serve unire i DATI delle STAZ METEO, ma li collego linkandole ai comuni:
+^Spatial joint tra la mappa/griglia del Trentino e il GeoDataFrame dei comuni (così poi associo
+stazione meteo al comune) (awa awa)
+^Spatial joint tra stazione meteo e comune associato (giustamente, preanticipato sopra) ?
+-Insomma conviene che venga fuori alla fine per il DF DEFINITIVO una FEATURE 'COMUNE'
+^(se ci sono Nan, vuol dire che il comune/quadratino semplicemente non ha stazione meteo)
+
+-RIMUOVO Feature 'geometry' che adesso è inutile (ho il gdf e tutto, i comuni, ecc.)
+-Sostituisco i 'NaN' con '-' (??????????????????????????????????) e 
+

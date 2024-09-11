@@ -114,3 +114,38 @@ Procedimento analogo a quello per le stazioni meteo.
 2. Ordino per data e ora.
 3. Sostituisco i `NaN` con `ffill()` o simile.
 4. Salvo in formato `.csv`.
+
+# EDA Dicembre
+L'analisi esplorativa dei dati di Dicembre è uguale a quella di Novembre, basta solo cambiare i nomi qua e là.
+
+# EDA Finale Fasce Orarie (Obiettivo: Regressione dei consumi elettrici giornalieri nella zona urbana di Trento)
+
+## Scopo
+Unire i due DataFrame di Novembre e Dicembre e suddividere i dati in fasce orarie.
+
+## Passaggi:
+
+1. Scarico i DataFrame creati in precedenza.
+2. Rimuovo le aree con dati meteo che non hanno linee elettriche.
+3. Rimuovo i giorni non infrasettimanali (come richiesto dal professore).
+4. Unisco i DataFrame di Novembre e Dicembre.
+5. Trasformo nuovamente le date in secondi per poterle normalizzare in futuro.
+6. Divido i dati del vento in modulo e angolo.
+7. Trasformo le colonne numeriche in tipo `float` (le feature numeriche dovrebbero essere: tempo (in secondi), corrente pesata, pioggia, temperatura, precipitazioni, modulo vento, angolo vento, tweet).
+
+## Suddivisione dei consumi in fasce:
+
+- Basso, medio, alto → Scelgo in base ai valori minimi e massimi della corrente, e considero anche l'intervallo intermedio per ottenere tre classi bilanciate.
+
+## Considero giorni e fasce orarie:
+
+- Aggiungo una feature per il giorno della settimana (Lunedì=0, Martedì=1, ...).
+- Divisione per fasce orarie: devono esserci (secondo la consegna) le fasce 08-19 e 19-24, ma posso fare suddivisioni ulteriori (ad esempio, Mattedo usa orari lavorativi e differenzia la pausa pranzo).
+- Pulizia: rimuovo tempo, data, ora e vento (ora ci sono modulo e angolo del vento).
+- Salvo il DataFrame in `.csv`.
+
+## Calcolo dei valori medi:
+
+- Calcolo i valori medi per tutte le feature numeriche nelle singole fasce orarie (per tweet e pioggia faccio il totale, non so perché Mattedo ha fatto così per questi ultimi due... boh).
+- Aggiornamento dei consumi (???).
+- Salvo il nuovo DataFrame in `.csv`.

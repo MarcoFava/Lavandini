@@ -1,5 +1,5 @@
 SCRIVO IN MANIERA ABBASTANZA TERRIBILE PER ORA, NEL CASO POI SISTEMO A POCO A POCO
-le seguenti sono le 'parole chiave' del nostro progetto
+le seguenti sono le 'parole chiave' del nostro progetto (o da
 'administrative_regions_Trentino', 'df_corrente_dec', 'df_corrente_nov', 'df_meteo', 
 'df_precipitazioni', 'df_social', 'df_ubicazioni', 'gdf', 'gdf_com' (e altri, I guess?)
 
@@ -37,4 +37,55 @@ Giornata:
 -Plot come sopra
 -Plot come sopra
 
-STAZIONI METEO
+STAZIONI METEO (get ready for the worst)
+E' utile plottarle su mappa Trentino: (così poi per le predizioni di ML associo quadratini e dati meteo)
+-Costruisco GeoDataFrame con posizioni stazioni meteo (Mattedo: creano una funzione per farlo, non nec?)
+-Proietto su sistema coordinate
+
+SOCIAL PULSE (dati dai social ?)
+Procedimento analogo che per staz meteo
+-" "
+-" "
+
+COSTRUISCO IL DF 'DEFINITIVO' (o totale) CON FEATURES
+-Feature (colonna) 'corrente pesata' ad ogni timestep, la calcolo allo stesso modo (+ o -) che in riga 23
+-Feature(?) (colonna) 'geometry': prendo coordinate spaziali dei quadratini -> merge con geodataframe (?)
+- to be continued...
+
+UNISCO POZIONI STAZ METEO, ma li collego linkandole ai comuni: (per poi associarne i dati nei luoghi)
+^Spatial joint tra la mappa/griglia del Trentino e il GeoDataFrame dei comuni (così poi associo 
+stazione meteo al comune) (awa awa)
+^Spatial joint tra stazione meteo e comune associato (giustamente, preanticipato sopra) ?
+-Insomma conviene che venga fuori alla fine per il DF DEFINITIVO una FEATURE 'COMUNE'
+^(se ci sono Nan, vuol dire che il comune/quadratino semplicemente non ha stazione meteo)
+
+-RIMUOVO Feature 'geometry' che adesso è inutile (ho il gdf e tutto, i comuni, ecc.)
+-Rimuovo i quadratini senza stazioni meteo nella regione amministrativa
+
+UNISCO DATI PRECIPITAZIONI (sono una roba a parte dalle stazioni meteo???)
+-Attenzione alle date, che siano dello stesso tipo (?)
+-Merge -> Feature 'pioggia' 
+-Sostituisco i Nan con 0 (o non ci sono dati, o non ha piovuto)
+
+UNISCO FEATURES STAZIONI METEO (temperatura, vento, precipitazioni)
+-Creo dataframe delle stazioni con i dati (temp, vento, precipitazioni)
+-Merge con il df delle precipitazioni ? (o col principale? non o cpt)
+^ATTENZIONE: timestep di 15 minuti (contro i 10 dei consumi elettrici) -> 
+-Sostituisco i NaN con un qualche funzione di riempimento tipo ffill() per il df finale
+^Attenzione sempre al formato/tipo della data dei vari df quando li unisci
+
+PULIZIA DATAFRAME
+-Elimino colonne (features) non più necessarie: 'lineset', ubicazioni varie e 'corrente (le ho gà inglobate nella corrente pesata se non sbaglio, e negli altri di posizione
+-Elimino righe identiche
+
+UNISCO DATI SOCIAL PULSE
+-Converto data e ora del df social
+^Spatial join tra df e mappa
+-Unisco i due df (aggiungo così colonna 'tweet' per dire se c'è stato un tweet o no in un luogo)
+
+ORDINO e chiudo DATAFRAME
+-Ordino per CellId
+-Ordino per Data e ora
+-Sostituisco i NaN con ffill() o simile
+-Salvo in formato .csv
+

@@ -89,3 +89,31 @@ ORDINO e chiudo DATAFRAME
 -Sostituisco i NaN con ffill() o simile
 -Salvo in formato .csv
 
+EDA DICEMBRE: è uguale a quello di novembre, mi pare, basta solo cambiare i nomi qua e là
+
+EDA FINALE FASCE ORARIE (obiettivo: regressione elettr giornaliera nella zona urbana di Trento)
+SCOPO (ogni tanto): UNIRE i 2 df di NOV e DIC e SUDDIVISIONE in FASCE ORARIE 
+
+-Scarico i DF creati in precedenza (ovviamente)
+-Rimuovo quadratini con dati meteo ma che non hanno linee elettriche 
+-Rimuovo giorni infrasettimanali (come da richiesta del prof)
+-Unisco i df di Novembre e Dicembre
+-Ri-Trasformo le date in secondi, così da poterli normalizzare per il futuro
+-Divido i dati del vento in modulo e angolo
+-Trasformo i dati numerici in float (le colonne/features numeriche)[dovrebbero essere: tempo(in secondi),
+corrente pesata, pioggia, temperatura, precipitazioni, modulo vento, angolo vento, tweet] tipo
+
+DIVIDO I CONSUMI IN 3 FASCE
+-Basso, medio, alto -> li scelgo in base ai min e max della corrente, e vedo anche intervallo intermedio
+in modo tale da avere 3 classi bilanciate
+
+SFRUTTO GIORNI E FASCE ORARIE
+-Aggiungo feature del giorno della settimana (Lunedì=0, Martedì=1, ...)
+-Divisione per fasce orarie: ci devono essere (da consegna) le fasce 08-19 e 19-24, ma si possono fare
+suddivisioni ulteriori (ex: Mattedo usano orari lavorativi, quindi differenziano anche la pausa pranzo)
+-Pulisco: rimuovo tempo, data e ora, vento (ci sono mod e ang vento ormai)
+-Salvo df in .csv 
+-Calcolo valori medi di tutte le features numeriche nelle singole fasce orarie (invece faccio il totale
+per i tweet e pioggia) (non so perchè, mattedo hanno fatto così per questi ultimi due... boh)
+-Aggiornamento dei consumi (???)
+-Salvo nuovo df in .csv

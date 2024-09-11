@@ -1,3 +1,2 @@
 # lavandini
-questo è il file readme. 
-ciao
+questo è il file readme.

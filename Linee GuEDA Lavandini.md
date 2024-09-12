@@ -36,7 +36,7 @@ Le seguenti sono le **parole chiave** del nostro progetto (o da considerare):
 # Richiesta dell'EDA: Aree con consumi maggiori
 
 1. Associo il consumo medio mensile delle linee elettriche con i quadratini delle linee.
-2. Calcolo la corrente pesata sulle ubicazioni dei quadratini (non ho capito), e sommo se ci sono più contributi (da più reti).
+2. Calcolo la corrente pesata sulle ubicazioni dei quadratini (non ho capito), e sommo se ci sono più contributi (da più reti). (perché si pesa sul numero di ubicazioni???)
 3. Plotto il risultato -> Merge con la griglia del Trentino.
 4. **Attenzione:** Devono avere lo stesso sistema di coordinate (confini regioni amministrative e griglia Trentino) -> scelgo una proiezione.
 5. Evidenzio i confini.

@@ -1,0 +1,21 @@
+CLASSIFICAZIONE
+
+Preliminari:
+-Importo dataframes con valori medi nelle fasce orarie
+-Classifico solo il comune di Trento (come da consegna?)
+-Creo un filtro per il preprocessing al variare della fascia oraria
+-Analisi dei consumi della fascia ALTA
+
+Scelte di training e test:
+-Training su novembre e metà dicembre, test su seconda metà dicembre
+-Divisione training e test casuale (80%,20%)
+
+PREPROCESSING
+
+RANDOM FOREST:
+-Divisione training e test-> addestro il modello di random forest
+-Faccio previsioni, valuto risultati
+
+-Costruisco dati per confusion matrix
+-Curva ROC
+-Grafico precision-recall

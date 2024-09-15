@@ -11,7 +11,7 @@ Le seguenti sono le **parole chiave** del nostro progetto (o da considerare):
 - `df_ubicazioni`
 - `gdf`
 - `gdf_com`
-- (e altri, I guess??)
+- (e altri, I guess?)
 
 ## Struttura di alcuni DataFrame
 
